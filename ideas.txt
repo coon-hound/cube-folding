@@ -1,0 +1,17 @@
+1.  we represent the cube  folding as a kind of graph. 
+    each square is a struct with 4 pointers to four 
+    other squares. If square A is connected say on the 
+    bottom with square B, then A->bottom = B. If 
+    square A has a slit at the bototm, let 
+    A->bottom = null or something like that. 
+
+    how would we quickly and efficiently see if it folds
+    into a unit cube?
+
+        we could first check if it has at least 6 
+        connected squares using dfs. 
+
+        then we could set one square as the base. the bottom
+        square, then fold it around and see if it turns into
+        a cube with all 6 sides with another sort of struct
+        keeping track of all the sides of the cube.  

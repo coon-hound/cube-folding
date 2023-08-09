@@ -27,19 +27,19 @@ void Square::SetLeft(Square *left) {
 	this->left = left;
 }
 
-Square Square::GetUp() {
-	return *up;
+Square* Square::GetUp() {
+	return up;
 }
 
-Square Square::GetDown() {
-	return *down;
+Square* Square::GetDown() {
+	return down;
 }
 
-Square Square::GetRight() {
-	return *right;
+Square* Square::GetRight() {
+	return right;
 }
 
-Square Square::GetLeft() {
-	return *left;
+Square* Square::GetLeft() {
+	return left;
 }
 

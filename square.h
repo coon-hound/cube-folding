@@ -11,10 +11,10 @@ public:
 	void SetRight(Square *right);
 	void SetLeft(Square *left);
 
-	Square GetUp();
-	Square GetDown();
-	Square GetRight();
-	Square GetLeft();
+	Square* GetUp();
+	Square* GetDown();
+	Square* GetRight();
+	Square* GetLeft();
 
 private:
 	Square *up;

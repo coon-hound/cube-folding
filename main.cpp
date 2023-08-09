@@ -2,6 +2,7 @@
 #include "cube.h"
 #include <iostream>
 #include <string>
+#include <map>
 
 /**
  * 1. get a count of how many square the user inputs.
@@ -138,6 +139,23 @@ void processInput(Square &root, std::vector<std::string> &input) {
 			char c = input[i][j];
 		}
 	}
+}
+
+std::map<Square*, bool> beenTo;
+
+//recursivley iterate through square and print out each "square"
+
+void printTree(Square* curr) {
+	if(beenTo[curr]) {
+		return;
+	}
+
+	beenTo.insert(std::pair<Square*, bool>(curr, true));
+
+	printTree(curr->GetUp());
+	printTree(curr->GetDown());
+	printTree(curr->GetLeft());
+	printTree(curr->GetRight());
 }
 
 int main() 

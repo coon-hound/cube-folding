@@ -50,7 +50,7 @@ bool inBounds(int i, int j, int rows, int columns) {
 	return i >= 0 && i < rows && j >= 0 && j < columns;
 }
 
-void renamemeplease(int i, int j, Square &curr, std::vector<std::string> &input) {
+void processSquare(int i, int j, Square &curr, std::vector<std::string> &input) {
 	int rows = input.size();
 	int columns = input[0].size();
 
@@ -137,6 +137,7 @@ void processInput(Square &root, std::vector<std::string> &input) {
 	for(int i = 0; i < rows; i++) {
 		for(int j = 0; j < columns; j++) {
 			char c = input[i][j];
+			processSquare(i, j, *current, input);
 		}
 	}
 }
@@ -151,6 +152,9 @@ void printTree(Square* curr) {
 	}
 
 	beenTo.insert(std::pair<Square*, bool>(curr, true));
+
+	printf("     %d\n", *curr->GetUp());
+	printf("%d -> %d <- %d\n", curr->GetRight(), );
 
 	printTree(curr->GetUp());
 	printTree(curr->GetDown());

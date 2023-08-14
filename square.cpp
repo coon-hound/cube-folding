@@ -1,4 +1,5 @@
 #include "square.h"
+#include <map>
 
 Square::Square() {
 	up = nullptr;
@@ -7,8 +8,26 @@ Square::Square() {
 	left = nullptr;
 }
 
-Square::~Square() {
+std::map<Square*, bool> beenTo;
 
+void delHelper(Square* curr) {
+	if(beenTo[curr]) {
+		return;
+	}
+
+	beenTo.insert({curr, true});
+
+	delHelper(curr->GetDown());
+	delHelper(curr->GetUp());
+	delHelper(curr->GetRight());
+	delHelper(curr->GetLeft());
+
+	delete curr;
+}
+
+Square::~Square() {
+	delHelper(this);
+	
 }
 
 void Square::SetUp(Square *up) {
@@ -27,6 +46,10 @@ void Square::SetLeft(Square *left) {
 	this->left = left;
 }
 
+void Square::SetId(int x) {
+	id = x;
+}
+
 Square* Square::GetUp() {
 	return up;
 }
@@ -43,3 +66,6 @@ Square* Square::GetLeft() {
 	return left;
 }
 
+int Square::GetId() {
+	return id;
+}
